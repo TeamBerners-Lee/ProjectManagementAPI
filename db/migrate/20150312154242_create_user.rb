@@ -5,7 +5,6 @@ class CreateUser < ActiveRecord::Migration
       t.string :email
       t.string :password_digest
       t.string :title
-      t.string :role
       t.string :token
     end
   end
