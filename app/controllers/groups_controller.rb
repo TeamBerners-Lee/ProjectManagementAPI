@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
 
   def index
     @groups = Group.all
-    render json: @groups
+    render json: @groups, status: 200
   end
 
   def show
