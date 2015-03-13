@@ -5,8 +5,8 @@ class CreateProjects < ActiveRecord::Migration
       t.string :description
       t.date :due_date
       t.boolean :privacy
-      t.belongs_to :group, index: true
+      t.belongs_to :user, index: true
     end
-    add_foreign_key :projects, :groups
+    add_foreign_key :projects, :users
   end
 end
