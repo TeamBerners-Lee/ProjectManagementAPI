@@ -11,6 +11,11 @@ class TasksController < ApplicationController
     end
    end
 
+  def show
+    @task = Task.find(params[:id])
+    render json: @task
+  end
+
   def create
     @project = Project.find(params[:project_id])
     @task = Task.new(task_params)
@@ -24,7 +29,7 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
-    if @task.update(project_params)
+    if @task.update(task_params)
       render json: @task, status: :ok
     else
       render json: @task, status: :unprocessable_entity

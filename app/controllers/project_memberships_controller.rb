@@ -11,7 +11,7 @@ class ProjectMembershipController < ApplicationController
   end
 
   def create
-    @project_membership = ProjectMembership.new(group_params)
+    @project_membership = ProjectMembership.new(project_params)
     if group.save
       render json: @project_membership, status: :created, location: @project_membership
     else
@@ -20,15 +20,16 @@ class ProjectMembershipController < ApplicationController
   end
 
   def update
-    @project_membership = ProjectMembership.find(group_membership_params[:id])
-    if @project_membership.update(group_params[:group])
+    @project_membership = ProjectMembership.find(project_membership_params[:id])
+    if @project_membership.update(project_params[:project])
+    render json: @project_membership, status: :ok
     else
       render json: @project_membership.errors, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @project_membership = ProjectMembership.find(group_params[:id])
+    @project_membership = ProjectMembership.find(project_params[:id])
     @project_membership.destroy
   end
 
@@ -36,3 +37,5 @@ class ProjectMembershipController < ApplicationController
 
   def project_membership_params
     params.require(:project_membership).permit(:role)
+  end
+end
