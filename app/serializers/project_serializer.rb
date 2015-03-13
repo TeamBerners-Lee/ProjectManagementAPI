@@ -1,5 +1,4 @@
 class ProjectSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :due_date, :privacy, :user, :tasks
-  belongs_to :user
+  attributes :id, :name, :description, :due_date, :privacy, :tasks, :user
   has_many :tasks
 end
