@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150312191014) do
+ActiveRecord::Schema.define(version: 20150313182931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,13 +25,8 @@ ActiveRecord::Schema.define(version: 20150312191014) do
   add_index "comments", ["task_id"], name: "index_comments_on_task_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
-  create_table "group_memberships", force: :cascade do |t|
+  create_table "project_memberships", force: :cascade do |t|
     t.string "role"
-  end
-
-  create_table "groups", force: :cascade do |t|
-    t.string  "name"
-    t.boolean "privacy"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -39,10 +34,10 @@ ActiveRecord::Schema.define(version: 20150312191014) do
     t.string  "description"
     t.date    "due_date"
     t.boolean "privacy"
-    t.integer "group_id"
+    t.integer "user_id"
   end
 
-  add_index "projects", ["group_id"], name: "index_projects_on_group_id", using: :btree
+  add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
 
   create_table "tasks", force: :cascade do |t|
     t.string   "name"
@@ -67,7 +62,6 @@ ActiveRecord::Schema.define(version: 20150312191014) do
     t.string   "email"
     t.string   "password_digest"
     t.string   "title"
-    t.string   "role"
     t.string   "token"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
@@ -77,7 +71,7 @@ ActiveRecord::Schema.define(version: 20150312191014) do
 
   add_foreign_key "comments", "tasks"
   add_foreign_key "comments", "users"
-  add_foreign_key "projects", "groups"
+  add_foreign_key "projects", "users"
   add_foreign_key "tasks", "projects"
   add_foreign_key "tasks", "users"
 end

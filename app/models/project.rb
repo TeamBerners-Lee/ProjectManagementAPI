@@ -1,4 +1,4 @@
 class Project < ActiveRecord::Base
-  belongs_to :user, dependent: :destroy
-  has_many :tasks
+  belongs_to :user
+  has_many :tasks, dependent: :destroy
 end
