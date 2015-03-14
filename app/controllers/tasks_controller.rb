@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
 
-  before_filter :authenticate, only: [:create, :update, :destroy]
+  before_filter :authenticate
 
   def index
     if params[:project_id]

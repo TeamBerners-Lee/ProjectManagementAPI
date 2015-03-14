@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
 
-before_filter :authenticate, only: [:create, :update, :destroy]
+before_filter :authenticate
 
   def index
     @projects = Project.all

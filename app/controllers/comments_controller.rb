@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
-before_filter :authenticate, only: [:create, :destroy]
+before_filter :authenticate
 
   def index
     if params[:task_id]
