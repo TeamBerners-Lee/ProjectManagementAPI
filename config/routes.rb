@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   end
 
   root 'home#index'
+  get 'amazon/sign_key'
 
 end
