@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
 
+before_filter :authenticate, only: [:create, :update, :destroy]
+
   def index
     @projects = Project.all
     render json: @projects, status: 200
@@ -31,6 +33,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project = Project.find(project_params[:id])
     @project.destroy
+    head :no_content
   end
 
   private

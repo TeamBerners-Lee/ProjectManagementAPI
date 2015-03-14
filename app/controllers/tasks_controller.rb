@@ -1,5 +1,7 @@
 class TasksController < ApplicationController
 
+  before_filter :authenticate, only: [:create, :update, :destroy]
+
   def index
     if params[:project_id]
       @project = Project.find(params[:project_id])
@@ -39,6 +41,7 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
+    head :no_content
   end
 
   private

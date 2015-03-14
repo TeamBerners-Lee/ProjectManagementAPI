@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+before_filter :authenticate, only: [:create, :destroy]
+
   def index
     if params[:task_id]
       @task = Task.find(params[:task_id])
@@ -26,11 +28,12 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
+    head :no_content
   end
 
   private
-  def task_params
-    params.require(:task).permit(:body)
+  def comment_params
+    params.require(:comment).permit(:body, :username, :task_id)
   end
 end
 
