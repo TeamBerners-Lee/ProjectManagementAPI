@@ -1,5 +1,7 @@
 class ProjectMembershipController < ApplicationController
 
+before_filter :authenticate, only: [:create, :update, :destroy]
+
   def index
     @project_membership = ProjectMembership.all
     render json: @project_memberships
@@ -31,6 +33,7 @@ class ProjectMembershipController < ApplicationController
   def destroy
     @project_membership = ProjectMembership.find(project_params[:id])
     @project_membership.destroy
+    head :no_content
   end
 
   private
