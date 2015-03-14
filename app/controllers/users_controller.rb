@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_filter :authenticate, only: [:index]
+  before_filter :authenticate
 
   def sign_in
     user = User.find_by(email: params[:email])
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if user.save
+    if @user.save
       render json: {token: @user.token}, status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
@@ -42,6 +42,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:id, :username, :password_digest, :title, :avatar, :token)
+    params.require(:user).permit(:id, :username, :email, :password, :password_confirmation, :title, :avatar, :token)
   end
 end
