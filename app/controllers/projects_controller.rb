@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
 
-before_filter :authenticate
+# before_filter :authenticate
 
   def index
     @projects = Project.all
@@ -22,8 +22,8 @@ before_filter :authenticate
   end
 
   def update
-    @project = Project.find(project_params[:id])
-    if @project.update(project_params[:project])
+    @project = Project.find(params[:id])
+    if @project.update(project_params)
       render json: @project, status: :ok
     else
       render json: @project.errors, status: :unprocessable_entity
@@ -31,7 +31,7 @@ before_filter :authenticate
   end
 
   def destroy
-    @project = Project.find(project_params[:id])
+    @project = Project.find(params[:id])
     @project.destroy
     head :no_content
   end
@@ -39,6 +39,6 @@ before_filter :authenticate
   private
 
   def project_params
-    params.require(:project).permit(:id, :name, :privacy)
+    params.require(:project).permit(:id, :name, :description, :due_date, :privacy)
   end
 end
