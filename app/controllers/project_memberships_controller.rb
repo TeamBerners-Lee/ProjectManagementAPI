@@ -1,6 +1,6 @@
 class ProjectMembershipController < ApplicationController
 
-before_filter :authenticate
+# before_filter :authenticate
 
   def index
     @project_membership = ProjectMembership.all

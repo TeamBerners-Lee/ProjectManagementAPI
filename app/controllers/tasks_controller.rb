@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
 
-  before_filter :authenticate
+  # before_filter :authenticate
 
   def index
     if params[:project_id]
@@ -21,7 +21,7 @@ class TasksController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     @task = Task.new(task_params)
-    @project.tasks << @project
+    @project.tasks << @task
     if @task.save
       render json: @task, status: :created
     else
