@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_filter :authenticate, except: [:create]
+  # before_filter :authenticate, except: [:create]
 
   def sign_in
     user = User.find_by(username: params[:username])
@@ -31,8 +31,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(user_params[:id])
-    if @user.update(user_params[:user])
+    @user = User.find(params[:id])
+    if @user.update(user_params)
       render json: @user, status: :ok
     else
       render json: @user.errors, status: :unprocessable_entity
