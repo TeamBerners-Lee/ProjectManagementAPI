@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
-before_filter :authenticate
+# before_filter :authenticate
 
   def index
     if params[:task_id]
@@ -16,7 +16,7 @@ before_filter :authenticate
   def create
     @task = Task.find(params[:task_id])
     @comment = Comment.new(comment_params)
-    @task.comments << @task
+    @task.comments << @comment
     if @comment.save
       render json: @comment, status: :created
     else
