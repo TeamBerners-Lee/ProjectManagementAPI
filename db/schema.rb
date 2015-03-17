@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20150313182931) do
     t.string "password_digest"
     t.string "title"
     t.string "token"
-    t.string "avatar"
+    t.string "avatar",          default: "https://s3.amazonaws.com/project-management-bucket/missing_avatar.png"
   end
 
   add_foreign_key "comments", "tasks"
