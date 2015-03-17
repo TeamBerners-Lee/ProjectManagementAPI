@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  # before_filter :authenticate, except: [:create]
+  # before_filter :authenticate, :except [:create]
 
   def sign_in
     user = User.find_by(username: params[:username])

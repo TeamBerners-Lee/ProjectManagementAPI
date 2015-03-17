@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password_digest
       t.string :title
       t.string :token
+      t.string :avatar
     end
   end
 end

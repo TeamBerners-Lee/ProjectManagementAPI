@@ -6,7 +6,6 @@ class Amazon
       'conditions': [
         {'bucket': '#{ENV['S3_BUCKET_NAME']}'},
         ['starts-with', '$key', '#{@key}'],
-        {'acl': 'public-read'},
         ['starts-with', '$Content-Type', 'image/jpeg'],
         ['content-length-range', 0, 10485760],
       ]}").gsub(/\n|\r/, '')
