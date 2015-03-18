@@ -4,8 +4,9 @@ class ApplicationController < ActionController::API
 
   protected
      def authenticate
-       authenticate_or_request_with_http_token do |token, options|
-       User.find_by(token: token)
-     end
-   end
+      # p request.env['HTTP_AUTHORIZATION'].gsub(/Token token=/,'')
+      authenticate_or_request_with_http_token do |token, options|
+      User.find_by(token: token)
+    end
+  end
 end
