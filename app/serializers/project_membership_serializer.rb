@@ -1,5 +1,5 @@
 class ProjectMembershipSerializer < ActiveModel::Serializer
-  attributes :id, :role, :users, :projects
+  attributes :id, :role
   has_many :users
   has_many :projects
 end
