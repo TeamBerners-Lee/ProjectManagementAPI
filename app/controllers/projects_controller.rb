@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    render json: @project
+    render json: @project, serializer: ProjectMembershipSerializer
   end
 
   def create
