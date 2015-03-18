@@ -1,3 +1,4 @@
+ProjectMembership.destroy_all
 Task.destroy_all
 User.destroy_all
 Project.destroy_all
@@ -10,7 +11,7 @@ users = User.create!([
   {username: 'Dating Person', email: 'd@ga.co', password_digest: 'yah', title: 'web developer', token: 'insert_token_here'},
   ])
 
-project_memberships = ProjectMembership.create!([{role: 'admin'},{role: 'developer'},{role: 'client'}])
+# project_memberships = ProjectMembership.create!([{role: 'admin'},{role: 'developer'},{role: 'client'}])
 
 projects = Project.create!([
   {name: "Project Management App",description: "Create an app for users to be more organized when they create their projects", due_date: DateTime.new(2015,3,19,9), privacy: false},
@@ -47,3 +48,22 @@ users[4].comments << task_comments[2]
 project_tasks[0].comments << task_comments[0]
 project_tasks[1].comments << task_comments[1]
 project_tasks[2].comments << task_comments[2]
+
+
+
+ProjectMembership.create!({role: 'admin', user_id: users[0].id, project_id: projects[0].id})
+ProjectMembership.create!({role: 'developer', user_id: users[1].id, project_id: projects[0].id})
+ProjectMembership.create!({role: 'developer', user_id: users[2].id, project_id: projects[0].id})
+ProjectMembership.create!({role: 'client', user_id: users[4].id, project_id: projects[0].id})
+
+
+ProjectMembership.create!({role: 'admin', user_id: users[2].id, project_id: projects[1].id})
+ProjectMembership.create!({role: 'developer', user_id: users[4].id, project_id: projects[1].id})
+ProjectMembership.create!({role: 'developer', user_id: users[1].id, project_id: projects[1].id})
+ProjectMembership.create!({role: 'client', user_id: users[3].id, project_id: projects[1].id})
+
+
+ProjectMembership.create!({role: 'admin', user_id: users[4].id, project_id: projects[2].id})
+ProjectMembership.create!({role: 'developer', user_id: users[1].id, project_id: projects[2].id})
+ProjectMembership.create!({role: 'developer', user_id: users[3].id, project_id: projects[2].id})
+ProjectMembership.create!({role: 'client', user_id: users[2].id, project_id: projects[2].id})

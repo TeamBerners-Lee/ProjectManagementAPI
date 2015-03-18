@@ -1,4 +1,4 @@
 class ProjectMembership < ActiveRecord::Base
-  has_many :users
-  has_many :projects
+  belongs_to :user
+  belongs_to :project
 end

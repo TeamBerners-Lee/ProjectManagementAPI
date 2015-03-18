@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :project_memberships, only: [:index, :show_users, :show_projects, :create, :update, :destroy]
+  get '/project_membership/user/:user_id', to: 'project_memberships#show_projects'
+  get '/project_membership/project/:project_id', to: 'project_memberships#show_users'
+
+
   resources :users, defaults: { format: :json }, only: [:index, :create, :show, :update] do
     post 'sign_in', on: :collection
   end
