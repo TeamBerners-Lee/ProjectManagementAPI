@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:index, :create, :destroy]
   end
 
-  root 'home#index'
+  root 'users#index'
   # get 'amazon/sign_key'
   get '/amazon/sign_key/:id', to: 'amazon#sign_key'
 end

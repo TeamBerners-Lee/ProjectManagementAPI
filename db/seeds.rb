@@ -1,3 +1,4 @@
+Task.destroy_all
 User.destroy_all
 Project.destroy_all
 
