@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
 
-  # before_filter :authenticate
+  before_filter :authenticate
 
   def index
     if params[:project_id]
