@@ -13,16 +13,16 @@ module ProjectManagementApi
     # -- all .rb files in that directory are automatically loaded.
     # Add Rack::Cors as middleware
     # WARNING: Allow ALL cross site scripting
-    # config.middleware.use Rack::Cors do
-    #   allow do
-    #     # WARNING: Allow ALL cross site scripting from ALL domains
-    #     origins '*'
-    #     # WARNING: Allow ALL HTTP method
-    #     # resource '*'
-    #     resource '*', :headers => :any, :methods => [:get, :post, :patch, :put, :delete, :options]
-    #     # resource '*', :headers => :any
-    #   end
-    # end
+    config.middleware.use Rack::Cors do
+      allow do
+        # WARNING: Allow ALL cross site scripting from ALL domains
+        origins '*'
+        # WARNING: Allow ALL HTTP method
+        # resource '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :patch, :put, :delete, :options]
+        # resource '*', :headers => :any
+      end
+    end
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
